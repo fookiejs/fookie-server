@@ -1,5 +1,6 @@
+const mongoose = require("mongoose")
+
 module.exports = async function (ctx) {
-    const mongoose = require("mongoose")
     await ctx.database({
         name: "mongodb",
         pk: "_id",
