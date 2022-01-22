@@ -1,6 +1,6 @@
 {
   "name": "fookie-server",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Fookie JS Http server plugin",
   "main": "index.js",
   "scripts": {
@@ -18,9 +18,8 @@
   },
   "homepage": "https://github.com/fookiejs/fookie-server#readme",
   "dependencies": {
-    "body-parser": "^1.19.1",
-    "cors": "^2.8.5",
-    "express": "^4.17.2",
+    "aws": "^0.0.3-2",
+    "fastify": "^3.27.0",
     "mongoose": "^6.1.7",
     "sequelize": "^6.13.0"
   }

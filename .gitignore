@@ -1,2 +1,4 @@
 node_modules
 .npmrc
+data
+package-lock.json
