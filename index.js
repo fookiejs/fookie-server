@@ -17,11 +17,11 @@ module.exports = async function (ctx) {
     })
 
     fastify.get("/health_check", (req, res) => {
-        res.status(200).json({ ok: true })
+        res.send({ ok: true })
     })
 
     ctx.listen = function (port) {
-        fastify.listen(port)
+        fastify.listen(port, '0.0.0.0')
     }
 
 

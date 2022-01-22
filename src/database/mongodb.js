@@ -56,23 +56,23 @@ module.exports = async function (ctx) {
             let Model = mongoose.model(model.name, new mongoose.Schema(schema, { versionKey: false }));
 
             model.methods.set("read", async function (payload, ctx, state) {
-                let res = await Model.find(payload.query, payload.attributes, payload.projection).lean();
+                let res = await Model.find(payload.query.filter, payload.query.attributes, payload.query.projection).lean();
                 payload.response.data = res;
             });
             model.methods.set("create", async function (payload, ctx, state) {
                 let res = await Model.create(payload.body);
-                payload.response.data = ctx.lodash.pick(res, payload.attributes)
+                payload.response.data = ctx.lodash.pick(res, payload.query.attributes)
             });
             model.methods.set("delete", async function (payload, ctx, state) {
-                let res = await Model.deleteMany(payload.query);
+                let res = await Model.deleteMany(payload.query.filter);
                 payload.response.data = res;
             });
             model.methods.set("update", async function (payload, ctx, state) {
-                payload.response.data = await Model.updateMany(payload.query, payload.body);
+                payload.response.data = await Model.updateMany(payload.query.filter, payload.body);
             });
 
             model.methods.set("count", async function (payload, ctx, state) {
-                let res = await Model.countDocuments(payload.query);
+                let res = await Model.countDocuments(payload.query.filter);
                 payload.response.data = res;
             });
         }
