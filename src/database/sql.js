@@ -26,7 +26,7 @@ module.exports = function (ctx) {
                 modelName: model.name
             });
 
-            model.methods.set("read", async function (payload, ctx, state) {
+            model.methods.read = async function (payload, ctx, state) {
                 let res = await Model.find({
                     where: payload.query,
                     attributes: payload.attributes,
@@ -34,29 +34,29 @@ module.exports = function (ctx) {
                     offset: payload.options.offset,
                 });
                 return res;
-            });
-            model.methods.set("create", async function (payload, ctx, state) {
+            }
+            model.methods.create = async function (payload, ctx, state) {
                 let res = await Model.create(payload.body);
                 return ctx.lodash.pick(res, payload.attributes)
-            });
-            model.methods.set("delete", async function (payload, ctx, state) {
+            }
+            model.methods.delete = async function (payload, ctx, state) {
                 let res = await Model.destroy({
                     where: payload.query
                 });
                 return res;
-            });
-            model.methods.set("update", async function (payload, ctx, state) {
+            }
+            model.methods.update = async function (payload, ctx, state) {
                 return await Model.update(payload.body, {
                     where: payload.query
                 });
-            });
+            }
 
-            model.methods.set("count", async function (payload, ctx, state) {
+            model.methods.count = async function (payload, ctx, state) {
                 let res = await Model.count({
                     where: payload.query
                 });
                 return res;
-            });
+            }
         }
     })
 }

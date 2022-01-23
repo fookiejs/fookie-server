@@ -1,6 +1,6 @@
 {
   "name": "fookie-server",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fookie JS Http server plugin",
   "main": "index.js",
   "scripts": {
