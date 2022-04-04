@@ -1,7 +1,6 @@
 const fastify = require("fastify")({
-    logger: false
+    logger: process.env.DEBUG || false
 })
-
 module.exports = async function (ctx) {
     fastify.post("/", async (req, res) => {
         try {
@@ -23,16 +22,4 @@ module.exports = async function (ctx) {
     ctx.listen = function (port) {
         fastify.listen(port, '0.0.0.0')
     }
-
-
-    await ctx.use(require('./src/database/mongodb.js'));
-    await ctx.use(require('./src/database/sql.js'));
-    await ctx.use(require('./src/database/dynomodb.js'));
-    await ctx.use(require('./src/database/cassandra.js'));
 }
-
-
-
-
-
-
