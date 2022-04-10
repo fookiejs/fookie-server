@@ -5,7 +5,7 @@ module.exports = async function (ctx) {
     fastify.post("/", async (req, res) => {
         try {
             let payload = req.body;
-            if (payload.user || typeof payload.system == "boolean") return false;
+            if (typeof payload.token == "boolean") return false;
             if (!payload.token && req.headers.token) payload.token = req.headers.token;
             await ctx.run(payload);
             res.send(payload.response)
