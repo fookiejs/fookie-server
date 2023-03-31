@@ -1,7 +1,7 @@
 const fastify = require("fastify")({ logger: true })
 
 export const listen = async function (port, fookie) {
-    fastify.post("/", async (request, reply) => {
+    fastify.post("/", async (request) => {
         return await fookie.run(request.body)
     })
 
